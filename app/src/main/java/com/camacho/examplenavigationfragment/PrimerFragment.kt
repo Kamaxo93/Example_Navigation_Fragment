@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.fragment.app.commit
+import androidx.fragment.app.setFragmentResultListener
 
 
 class PrimerFragment : Fragment(R.layout.fragment_primer) {
@@ -14,6 +16,11 @@ class PrimerFragment : Fragment(R.layout.fragment_primer) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val btnNavigation = view.findViewById<Button>(R.id.primer_fragment__btn__btn_navigation)
+        val labelTextTile = view.findViewById<TextView>(R.id.primer_fragment__label__text_title)
+        setFragmentResultListener("requestKey") { _, bundle ->
+            val result = bundle.getString("bundleKey")
+            labelTextTile.text = result
+        }
 
         btnNavigation.setOnClickListener {
             requireActivity().supportFragmentManager.commit {

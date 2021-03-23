@@ -8,6 +8,7 @@
     tools:context=".PrimerFragment">
 
     <TextView
+        android:id="@+id/primer_fragment__label__text_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/primer_fragment"

@@ -2,9 +2,11 @@ package com.camacho.examplenavigationfragment
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResult
 
 class SecondFragment : Fragment(R.layout.fragment_second) {
     private var name: String? = ""
@@ -19,7 +21,12 @@ class SecondFragment : Fragment(R.layout.fragment_second) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val labelTextInfo = view.findViewById<TextView>(R.id.second_fragment__label__text_info)
+        val btnSetData = view.findViewById<Button>(R.id.second_fragment__btn__btn_navigation)
         labelTextInfo.text = "$name $age"
+        btnSetData.setOnClickListener {
+            val result = "Resultado"
+            setFragmentResult("requestKey", bundleOf("bundleKey" to result))
+        }
     }
 
     companion object {
